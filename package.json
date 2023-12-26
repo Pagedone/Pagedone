@@ -11,17 +11,29 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+"
+    "url": "git+https://github.com/Pagedone/Pagedone.git"
   },
   "keywords": [
     "pagedone",
-    "components",
-    "pagedone-components"
+    "html",
+    "css",
+    "javascript",
+    "tailwind",
+    "tailwind examples",
+    "tailwind conponents",
+    "tailwind components library",
+    "tailwind elements",
+    "tailwind sections",
+    "tailwind css",
+    "tailwind ui"
   ],
   "author": "pagedone",
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/Pagedone/Pagedone#readme",
   "devDependencies": {
     "tailwindcss": "^3.3.2"
+  },
+  "bugs": {
+    "url": "https://github.com/Pagedone/Pagedone/issues"
   }
 }
