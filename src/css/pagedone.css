@@ -550,51 +550,65 @@ video {
   }
 }
 
-.accordion.active > .accordion-toggle.accordion-active\:text-indigo-600 {
+
+.accordion.active > .accordion-toggle.accordion-active\:text-indigo-600{
   --tw-text-opacity: 1;
   color: rgb(79 70 229 / var(--tw-text-opacity));
 }
 
-.accordion.active > .accordion-toggle .accordion-active\:text-indigo-600 {
+.accordion.active > .accordion-toggle .accordion-active\:text-indigo-600{
   --tw-text-opacity: 1;
   color: rgb(79 70 229 / var(--tw-text-opacity));
 }
 
-.accordion.active > .accordion-toggle.accordion-active\:text-gray-900 {
+.accordion.active > .accordion-toggle.accordion-active\:text-gray-900{
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
-.accordion.active > .accordion-toggle .accordion-active\:rotate-180 {
+.accordion.active > .accordion-toggle .accordion-active\:rotate-180{
   --tw-rotate: 180deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.accordion.active.accordion-active\:bg-indigo-50 {
+.accordion.active > .accordion-toggle .accordion-active\:rotate-90{
+  --tw-rotate: 90deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.accordion.active.accordion-active\:bg-indigo-50{
   --tw-bg-opacity: 1;
   background-color: rgb(238 242 255 / var(--tw-bg-opacity));
 }
 
-.accordion.active.accordion-active\:border-b-0 {
+.accordion.active.accordion-active\:border-b-0{
   border-bottom-width: 0px;
 }
 
-.accordion.active > .accordion-toggle.accordion-active\:font-semibold {
+.accordion.active > .accordion-toggle.accordion-active\:font-semibold{
   font-weight: 600;
 }
 
-.accordion.active.accordion-active\:bg-gray-50 {
+.accordion.active.accordion-active\:bg-gray-50{
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
 
-.accordion.active.accordion-active\:rounded-xl {
+.accordion.active.accordion-active\:rounded-xl{
   border-radius: 0.75rem;
 }
 
-.accordion.active.accordion-active\:border-indigo-600 {
+.accordion.active.accordion-active\:border-indigo-600{
   --tw-border-opacity: 1;
   border-color: rgb(79 70 229 / var(--tw-border-opacity));
+}
+
+.accordion.active > .accordion-toggle .accordion-active\:hidden{
+  display: none;
+}
+
+.accordion.active > .accordion-toggle .accordion-active\:block{
+  display: block;
 }
 
 .accordion-toggle.active ~ .accordion-content{
@@ -608,19 +622,19 @@ video {
 }
 
 input[type='checkbox']:checked{
-  background-image: url('https://beta.pagedone.io/asset/uploads/1689406942.svg');
+  background-image: url('https://pagedone.io/asset/uploads/1689406942.svg');
 }
 
 input[type='checkbox']:disabled:checked {
-  background-image: url('https://beta.pagedone.io/asset/uploads/1689403247.png');
+  background-image: url('https://pagedone.io/asset/uploads/1689403247.png');
 }
 
 input[type='checkbox']:indeterminate{
-  background-image: url('https://beta.pagedone.io/asset/uploads/1689407165.svg');
+  background-image: url('https://pagedone.io/asset/uploads/1689407165.svg');
 }
 
 input[type='checkbox']:indeterminate:disabled {
-  background-image: url('https://beta.pagedone.io/asset/uploads/1689403311.png');
+  background-image: url('https://pagedone.io/asset/uploads/1689403311.png');
 }
 
 input[type="radio"] + label span{
@@ -675,6 +689,11 @@ input[type="radio"]:checked:disabled + label span {
   color: rgb(79 70 229 / var(--tw-text-opacity));
 }
 
+[data-tab].active > .tab-active\:text-indigo-600 {
+  --tw-text-opacity: 1;
+  color: rgb(79 70 229 / var(--tw-text-opacity));
+}
+
 [data-tab].active.tab-active\:text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -711,7 +730,20 @@ input[type="radio"]:checked:disabled + label span {
 [data-tab].active .tab-active\:stroke-indigo-600 {
   stroke: #4f46e5;
 }
-
+[data-tab].active.tab-active\:bg-gradient-to-tr {
+  background-image: linear-gradient(
+    to top right,
+    var(--tw-gradient-stops)
+  );
+}
+[data-tab].active.tab-active\:text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+[data-tab].active > .group-active\:text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
 .tooltip[data-tooltip-placement^=top]
     .tooltip[data-tooltip-placement^=top]>.tooltip-arrow {
   top: -4px;
@@ -737,7 +769,7 @@ select{
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: transparent url("https://beta.pagedone.io/asset/uploads/1695813759.png") no-repeat 95% center;
+  background: transparent url("https://pagedone.io/asset/uploads/1695813759.png") no-repeat 95% center;
 }
 
 .open .modal-open\:visible {

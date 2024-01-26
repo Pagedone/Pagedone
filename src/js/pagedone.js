@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const alertButtons = document.querySelectorAll('[data-dismiss="alert"]');
     const sidebarButtons = document.querySelector('[data-pd-overlay="#docs-sidebar"]');
     const dropdownButtons = document.querySelectorAll('.dropdown-toggle');
-
+    collapse();
     if (dropdownButtons) {
         dropdown();
     }
@@ -166,56 +166,6 @@ function alwaysOpenAccordion(alwaysOpenAccordionGroup) {
         });
     }
 }
-
-// below code is for other normal accordion
-// function alwaysOpenAccordion(alwaysOpenAccordionGroup) {
-//     const accordionButtons = alwaysOpenAccordionGroup.querySelectorAll('.accordion-toggle');
-
-//     // Add click event listeners to each accordion header
-//     accordionButtons.forEach(button => {
-//         button.addEventListener('click', () => {
-//             const accordion = button.parentElement;
-//             const accordionContent = button.nextElementSibling;
-
-//             if (accordionContent.classList.contains('active')) {
-//                 // Close the clicked accordion
-//                 accordionContent.style.maxHeight = null; // Reset max-height
-//                 accordionContent.classList.remove('active');
-//             } else {
-//                 // Close any previously opened accordions
-//                 const activeAccordions = alwaysOpenAccordionGroup.querySelectorAll('.accordion-content.active');
-//                 activeAccordions.forEach(activeAccordion => {
-//                     activeAccordion.style.maxHeight = null;
-//                     activeAccordion.classList.remove('active');
-//                 });
-
-//                 // Open the clicked accordion
-//                 accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
-//                 accordionContent.classList.add('active');
-//             }
-//         });
-//     });
-// }
-
-// function nestedAccordion(nestedAccordionGroup) {
-//     const accordionHeaders = nestedAccordionGroup.querySelectorAll('.accordion-toggle');
-//     accordionHeaders.forEach(header => {
-//         header.addEventListener('click', () => {
-
-//             header.classList.toggle('active');
-
-//             const accordionContent = header.parentNode.querySelector('.accordion-content');
-
-//             if (accordionContent.style.maxHeight) {
-//                 // Close the accordion
-//                 accordionContent.style.maxHeight = null;
-//             } else {
-//                 // Open the accordion
-//                 accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
-//             }
-//         });
-//     });
-// }
 
 function nestedAccordion(accordionClass, panelClass) {
     var acc = document.getElementsByClassName(accordionClass);
@@ -457,6 +407,22 @@ function dropdown(params) {
                 targetDropdown.classList.add("hidden");
             }
 
+        })
+    })
+}
+
+function collapse(params) {
+    var togglebuttons = document.querySelectorAll('[data-collapse-toggle]');
+    togglebuttons.forEach(function (button) {
+        button.addEventListener('click', function () {
+            var targetId = button.getAttribute('data-collapse-toggle');
+            var targetCollapse = document.getElementById(targetId);
+            if (targetCollapse.classList.contains('hidden')) {
+                targetCollapse.classList.remove("hidden");
+            }
+            else {
+                targetCollapse.classList.add("hidden");
+            }
         })
     })
 }
