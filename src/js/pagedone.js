@@ -332,6 +332,7 @@ function sidebar() {
 }
 
 function modal() {
+    var currentModal = null;
     function openModal(modalId) {
         var modal = document.getElementById(modalId);
         var backdrop = document.getElementById('backdrop');
