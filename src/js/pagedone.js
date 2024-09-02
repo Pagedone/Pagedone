@@ -9,9 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const alertButtons = document.querySelectorAll('[data-dismiss="alert"]');
     const sidebarButtons = document.querySelector('[data-pd-overlay="#docs-sidebar"]');
     const dropdownButtons = document.querySelectorAll('.dropdown-toggle');
+    const drawerButtons = document.querySelectorAll('.drawer-button');
     collapse();
     if (dropdownButtons) {
         dropdown();
+    }
+    if (drawerButtons) {
+        drawer();
     }
     if (sidebarButtons) {
         sidebar();
@@ -424,6 +428,91 @@ function collapse(params) {
             else {
                 targetCollapse.classList.add("hidden");
             }
+        })
+    })
+}
+
+function drawer() {
+    const drawerButtons = document.querySelectorAll('.drawer-button');
+    drawerButtons.forEach(drawerButton => {
+        drawerButton.addEventListener('click', function (event) {
+            var getDrawerPosition = drawerButton.getAttribute("data-drawer-position")
+            if (getDrawerPosition == 'left') {
+                var getDrawerId = drawerButton.getAttribute("data-drawer-target")
+                var drawer = document.getElementById(getDrawerId);
+                // drawer.classList.add("-translate-x-full");
+                // drawer.classList.remove("translate-x-full");
+                function openDrawer() {
+                    var getDrawerId = drawerButton.getAttribute("data-drawer-target")
+                    var drawer = document.getElementById(getDrawerId);
+                    drawer.classList.remove("-translate-x-full");
+                    drawer.setAttribute("aria-hidden", "false");
+                    drawer.focus();
+                }
+
+                function closeDrawer() {
+                    var getDrawerId = drawerButton.getAttribute("data-drawer-target")
+                    var drawer = document.getElementById(getDrawerId);
+                    drawer.classList.add("-translate-x-full");
+                    drawer.setAttribute("aria-hidden", "true");
+                }
+            }
+            if (getDrawerPosition == 'right') {
+                // console.log(getDrawerPosition);
+                var getDrawerId = drawerButton.getAttribute("data-drawer-target")
+                var drawer = document.getElementById(getDrawerId);
+                drawer.classList.remove("-translate-x-full");
+                drawer.classList.add("translate-x-full");
+
+                function openDrawer() {
+                    drawer.classList.remove("translate-x-full");
+                    drawer.setAttribute("aria-hidden", "false");
+                    drawer.focus();
+                }
+
+                function closeDrawer() {
+                    drawer.classList.add("translate-x-full");
+                    drawer.setAttribute("aria-hidden", "true");
+                }
+            }
+            if (getDrawerPosition == 'top') {
+                var getDrawerId = drawerButton.getAttribute("data-drawer-target")
+                var drawer = document.getElementById(getDrawerId);
+                drawer.classList.remove("-translate-x-full");
+                drawer.classList.add("-translate-y-full");
+
+                function openDrawer() {
+                    drawer.classList.remove("-translate-y-full");
+                    drawer.setAttribute("aria-hidden", "false");
+                    drawer.focus();
+                }
+
+                function closeDrawer() {
+                    drawer.classList.add("-translate-y-full");
+                    drawer.setAttribute("aria-hidden", "true");
+                }
+            }
+            if (getDrawerPosition == 'bottom') {
+                var getDrawerId = drawerButton.getAttribute("data-drawer-target")
+                var drawer = document.getElementById(getDrawerId);
+                drawer.classList.remove("translate-y-full");
+                drawer.classList.add("translate-none");
+
+                function openDrawer() {
+                    drawer.classList.remove("translate-y-full");
+                    drawer.setAttribute("aria-hidden", "false");
+                    drawer.focus();
+                }
+
+                function closeDrawer() {
+                    drawer.classList.add("translate-y-full");
+                    drawer.setAttribute("aria-hidden", "true");
+                }
+            }
+
+            openDrawer();
+            console.log(getDrawerId);
+            document.querySelector("#" + getDrawerId + " [data-drawer-hide]").addEventListener("click", closeDrawer);
         })
     })
 }
