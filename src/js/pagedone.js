@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (tooltipsButtons) {
         tooltips();
     }
-    if (openModalButtons) {
+    if (openModalButtons.length > 0) {
         modal();
     }
     if (speeddial) {
@@ -44,48 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
-
-// function defaultAccordion() {
-//     const accordionGroup = document.querySelector('.accordion-group');
-//     console.log(accordionGroup);
-//     // accordionGroups.forEach(group => {
-//         const accordionButtons = accordionGroup.querySelectorAll('.accordion-toggle');
-//             accordionButtons.forEach(button => {
-//                 button.addEventListener('click', (event) => {
-//                     const accordion = button.parentElement;
-//                     const content = button.nextElementSibling;
-//                     const maxHeight = content.style.maxHeight;
-//                     console.log(maxHeight);
-//                     const isOpen = maxHeight !== '' && maxHeight !== '0px';
-//                     if (isOpen) {
-//                         close(button, accordion);
-//                     } else {
-//                         openSection(button, content, accordion);
-//                     }
-//                 });
-
-//                 function close(element, accordion) {
-//                     const content = element.nextElementSibling;
-//                     content.style.maxHeight = '';
-//                     if (accordion) {
-//                         accordion.classList.remove('active');
-//                     }
-//                 }
-
-//                 // Function to open a section
-//                 function openSection(button, content, accordion) {
-//                     content.style.maxHeight = content.scrollHeight + 'px';
-//                     accordion.classList.add('active');
-//                     const otherButtons = group.querySelectorAll('.accordion-toggle');
-//                     otherButtons.forEach(otherButton => {
-//                         if (otherButton !== button) {
-//                             close(otherButton, accordion);
-//                         }
-//                     });
-//                 }
-//             });
-//     // });
-// }
 
 function defaultAccordion(defaultAccordionGroup) {
 
@@ -122,39 +80,8 @@ function close(element, accordion) {
     content.style.maxHeight = '';
 }
 
-// function alwaysOpenAccordion(alwaysOpenAccordionGroup) {
-//     const accordionButtons = alwaysOpenAccordionGroup.querySelectorAll('.accordion-toggle');
-//     // Add click event listeners to each accordion header
-//     accordionButtons.forEach(button => {
-//         button.addEventListener('click', () => {
-//             // Toggle the visibility of the clicked accordion content
-//             const accordion = button.parentElement;
-//             const accordionContent = button.nextElementSibling;
-
-//             if (accordionContent.classList.contains('active')) {
-//                 // Calculate the computed height of the accordion content
-//                 const contentHeight = accordionContent.scrollHeight + 'px';
-
-//                 // Set the initial height of the accordion content to 0
-//                 // accordionContent.style.height = '0';
-
-//                 // Wait for the next frame to apply the new height and trigger the transition
-//                 requestAnimationFrame(() => {
-//                     accordionContent.style.height = contentHeight;
-//                 });
-//             } else {
-//                 // Set the height to 0 to trigger the closing transition
-//                 accordionContent.style.height = '0';
-//             }
-//         });
-//     });
-// }
-
-
 function alwaysOpenAccordion(alwaysOpenAccordionGroup) {
     const accordionButtons = alwaysOpenAccordionGroup.querySelectorAll('.accordion-toggle');
-    console.log(accordionButtons.length);
-    // var acc = document.getElementsByClassName("acc");
     var i;
 
     for (i = 0; i < accordionButtons.length; i++) {
@@ -254,16 +181,12 @@ function speedDial() {
 
         button.addEventListener('mouseenter', () => {
             tooltip.classList.remove('invisible');
-            // tooltip.classList.remove('opacity-0');
             tooltip.classList.add('visible');
-            // tooltip.classList.add('opacity-100');
         });
 
         button.addEventListener('mouseleave', () => {
             tooltip.classList.remove('visible');
-            // tooltip.classList.remove('opacity-100');
             tooltip.classList.add('invisible');
-            // tooltip.classList.add('opacity-0');
         });
     });
 }
@@ -318,11 +241,6 @@ function sidebar() {
         });
     }
 
-    // Add event listener to the document
-    // document.addEventListener('click', function (event) {
-    //     // Check if the clicked element is the sidebar or a descendant of the sidebar
-    //         closeSidebar();
-    // });
     if (sidebarToggle) {
         sidebarToggle.addEventListener('click', () => {
             // Open the sidebar smoothly after a small delay
@@ -336,10 +254,11 @@ function sidebar() {
 }
 
 function modal() {
-    var currentModal = null;
+    
     function openModal(modalId) {
         var modal = document.getElementById(modalId);
         var backdrop = document.getElementById('backdrop');
+        // var modal_box = document.getElementById('modal-box');
 
         if (modal) {
             document.body.classList.add('overflow-hidden');
@@ -349,11 +268,11 @@ function modal() {
             }
             ), 200)
             backdrop.classList.remove('hidden');
+
         }
     }
 
     function closeModal(modalId) {
-        console.log(modalId);
         const modal = document.getElementById(modalId);
         if (modal) {
             modal.classList.add('hidden');
@@ -361,7 +280,6 @@ function modal() {
             document.body.classList.remove('overflow-hidden');
         }
         backdrop.classList.add('hidden');
-        document.body.classList.remove('overflow-hidden');
     }
 
     const openModalButtons = document.querySelectorAll('.modal-button');
@@ -385,11 +303,16 @@ function modal() {
 
     window.onclick = function (event) {
         var modal = document.getElementById(currentModal);
+
         if (event.target == modal) {
-            modal.style.display = "none";
-            var backdrop = document.getElementById('backdrop');
-            backdrop.classList.add('hidden');
-            document.body.classList.remove('overflow-hidden');
+            if (modal.id != "static-backdrop-modal") {
+                closeModal(modal.id);
+                var backdrop = document.getElementById('backdrop');
+                backdrop.classList.add('hidden');
+                modal.classList.remove('open')
+
+                document.body.classList.remove('overflow-hidden');
+            }
         }
     }
 }
@@ -401,7 +324,6 @@ function dropdown(params) {
         button.addEventListener('click', function () {
             var targetId = button.getAttribute('data-target');
             var targetDropdown = document.getElementById(targetId);
-            // targetDropdown.toggleAttribute();
             if (targetDropdown.classList.contains('hidden')) {
                 setTimeout((function () {
                     targetDropdown.classList.add('open');
@@ -440,8 +362,6 @@ function drawer() {
             if (getDrawerPosition == 'left') {
                 var getDrawerId = drawerButton.getAttribute("data-drawer-target")
                 var drawer = document.getElementById(getDrawerId);
-                // drawer.classList.add("-translate-x-full");
-                // drawer.classList.remove("translate-x-full");
                 function openDrawer() {
                     var getDrawerId = drawerButton.getAttribute("data-drawer-target")
                     var drawer = document.getElementById(getDrawerId);
@@ -458,7 +378,6 @@ function drawer() {
                 }
             }
             if (getDrawerPosition == 'right') {
-                // console.log(getDrawerPosition);
                 var getDrawerId = drawerButton.getAttribute("data-drawer-target")
                 var drawer = document.getElementById(getDrawerId);
                 drawer.classList.remove("-translate-x-full");
@@ -511,7 +430,6 @@ function drawer() {
             }
 
             openDrawer();
-            console.log(getDrawerId);
             document.querySelector("#" + getDrawerId + " [data-drawer-hide]").addEventListener("click", closeDrawer);
         })
     })
