@@ -31,7 +31,7 @@
   "license": "MIT",
   "homepage": "https://github.com/Pagedone/Pagedone#readme",
   "devDependencies": {
-    "tailwindcss": "^3.3.2"
+    "tailwindcss": "^4.2.0"
   },
   "bugs": {
     "url": "https://github.com/Pagedone/Pagedone/issues"
