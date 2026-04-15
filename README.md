@@ -24,11 +24,24 @@ First, you need to make sure that you have a working [Tailwind CSS](https://tail
   npm install pagedone
 ```
 
+  1.1) Install Pagedone latest version using following command:
+
+ ```bash
+   npm install pagedone@next
+ ```
+
 2) Require the CSS that powers the styles of elements inside the <head> tag
 
 ```bash
   <link href="../path/to/src/pagedone.css"/>
 ```   
+
+    2.1) Require CSS for latest version using following command:
+
+
+```bash
+  <link href="../path/to/src/pagedone@next/dist/pagedone-v2.css"/>
+```  
 
 3) Require the JavaScript code that powers the interactive elements before the end of your <body> tag
 
